@@ -1,0 +1,10 @@
+{
+  "id": "my-app",
+  "version": "1",
+  "screens": [
+    {
+      "id": "1",
+      "name": "Main screen"
+    }
+  ]
+}
