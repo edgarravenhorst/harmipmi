@@ -22,15 +22,16 @@ On linux make sure you have a working `zip` command.
 App
 ---
 
-...
----------- app/screens/1/index.html
----------- app/manifest.json <- version+id+don't touch screens
+The main entrypoint for an app is [app/screens/1/index.html](app/screens/1/index.html).
+The id and version of the app are specified in [app/manifest.json](app/manifest.json).
+Do not edit the screen id as currently only screen `1` is in use.
+Make sure you change the version if you want to publish an updated application.
 
 Motion
 ------
 
 We use 'TSPS' for motion detection. TSPS access is provided with a websocket.
-Documentation about the specific protocol can be found at under (docs/ipmi-ws.md)[docs/ipmi-ws.md].
+Documentation about the specific protocol can be found at under [docs/ipmi-ws.md](docs/ipmi-ws.md).
 
 There is a proxy available for both the wirelab installation and the noorderhagen installation.
 The websockets are available under the following urls.
