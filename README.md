@@ -29,7 +29,6 @@ App
 Motion
 ------
 
----------- docs/ipmi-ws.md <- todo
 We use 'TSPS' for motion detection. TSPS access is provided with a websocket.
 Documentation about the specific protocol can be found at under (docs/ipmi-ws.md)[docs/ipmi-ws.md].
 
@@ -43,7 +42,7 @@ Simulator
 ---------
 
 ...
----------- todo
+---------- docs/martijn.md <- todo
 
 Framework
 ---------
