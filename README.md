@@ -24,6 +24,7 @@ App
 
 The main entrypoint for an app is [app/screens/1/index.html](app/screens/1/index.html).
 The id and version of the app are specified in [app/manifest.json](app/manifest.json).
+
 Do not edit the screen id as currently only screen `1` is in use.
 Make sure you change the version if you want to publish an updated application.
 
