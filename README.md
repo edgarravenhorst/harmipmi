@@ -29,9 +29,15 @@ App
 Motion
 ------
 
-...
 ---------- docs/ipmi-ws.md <- todo
----------- proxy (noorderhagen+wirelab)
+We use 'TSPS' for motion detection. TSPS access is provided with a websocket.
+Documentation about the specific protocol can be found at under (docs/ipmi-ws.md)[docs/ipmi-ws.md].
+
+There is a proxy available for both the wirelab installation and the noorderhagen installation.
+The websockets are available under the following urls.
+
+- `http://ipmi.wirelab.nl:4000/secret/noorderhagen`
+- `http://ipmi.wirelab.nl:4000/secret/wirelab`
 
 Simulator
 ---------
