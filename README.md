@@ -40,6 +40,18 @@ The websockets are available under the following urls.
 - `http://ipmi.wirelab.nl:4000/secret/noorderhagen`
 - `http://ipmi.wirelab.nl:4000/secret/wirelab`
 
+Development server
+------------------
+
+In order to use the development server you can use the added server.js file to serve either 
+the app or the examples folder of the repo.
+As preparation you will need to run `npm install` in the root folder of the repository to install
+the required dependencies. Once installed you can run:
+* `npm start` to run your application as a server
+* `npm start examples` to run the examples folder of the repository
+
+Once the server is started you can access it through http://localhost:8081 for the app or http://localhost:8082 for the examples.
+
 Simulator
 ---------
 
@@ -49,5 +61,5 @@ Simulator
 Framework
 ---------
 
-...
----------- docs/martijn.md <- todo
+In order to access the documentation you can run `npm start examples` in the root folder of the repository to
+start a server with the example code and documentation.

@@ -1,0 +1,20 @@
+{
+  "name": "ipmi-hackaton",
+  "version": "1.0.0",
+  "description": "IPMI Hackaton apptemplate, examples and documentation",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "method-override": "^2.3.7",
+    "morgan": "^1.8.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Wirelab Digital Creatives",
+  "license": "ISC"
+}
