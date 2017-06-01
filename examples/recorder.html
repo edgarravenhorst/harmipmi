@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Motion recorder - TSPS Simulator</title>
+    <style type="text/css">
+      html, body {
+        font-family: sans-serif;
+      }
+      .left {
+        margin: 0 0 20px;
+        text-align: left;
+      }
+      span {
+        font-weight: bold;
+      }
+      #container {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);        
+      }
+    </style>
+  </head>
+  <body>
+    <a id="download"></a>
+    <div id="container">
+      <div class="left">
+        Recording: <span id="recording">false</span><br>
+        Recording duration: <span id="length">0.0</span> seconds<br>
+        Recorded scene messages: <span id="scenecount">0</span> messages<br>
+        Recorder blob messages: <span id="blobcount">0</span> messages<br>
+      </div>
+      <button onclick="startRecording()">Start recording</button>
+      <button onclick="stopRecording()">Stop recording</button>
+      <button onclick="download()">Download simulation data</button>
+    </div>
+
+    <script src="js/ipmi.min.js"></script>
+    <script>
+      // Setup configuration for motion tracking
+      var config = {
+        tracking: { 
+          hostaddr: 'ipmi.wirelab.nl', 
+          hostport: 4000, 
+          hostpath: '/secret/wirelab', 
+          method: IPMI.TrackingMethod.TSPS
+        }
+      };
+
+      // Initialize the client framework
+      var IPMIFramework = new IPMI.Framework(config);
+    </script>
+
+    <script>    
+      var recording = false;
+      var netlog = [];
+      var scenecount = 0;
+      var blobcount = 0;
+      var startTime = new Date();
+
+      function startRecording() {
+        recording = true;
+        scenecount = 0;
+        blobcount = 0;
+        netlog = [];
+      }
+
+      function stopRecording() {
+        recording = false;
+      }
+
+      function download() {
+        var elm = document.querySelector('#download');
+        var json = '[' + netlog.join(',') + ']';
+        var blob = new Blob([json], {type: "octet/stream"});
+        var url = window.URL.createObjectURL(blob);
+        elm.href = url;
+
+        elm.download = 'simulation.json';
+        elm.onclick = function() {
+          var elm = document.querySelector('#download');
+        }
+        elm.click();
+        window.URL.revokeObjectURL(url);
+      }
+
+      IPMIFramework.Tracking.DataReceivedSignal.add(function(data) {
+        document.querySelector('#recording').innerText = recording.toString();
+
+        if (!recording) return;
+        if (data.type == 'scene') scenecount++;
+        if (data.type.indexOf('person') == 0) blobcount++;
+        var time = (new Date().getTime()) - startTime;
+
+        document.querySelector('#scenecount').innerText = scenecount;
+        document.querySelector('#blobcount').innerText = blobcount;
+        document.querySelector('#length').innerText = (time / 1000).toFixed(1);
+
+        data.__time__ = time;
+        netlog.push(JSON.stringify(data));
+      })
+    </script>
+  </body>
+</html>
