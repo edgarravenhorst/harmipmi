@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation</title>
+<link rel="stylesheet" type="text/css" href="css/highlight.css">
+<style type="text/css">
+  html, body { background: #18232e; font-family: sans-serif; font-size: 15px;}
+  h1 { color: #f8bd10; font-size: 1.75em; border-bottom: 2px solid;}
+  h2 { color: white; font-size: 1.5em; font-weight: normal; border-bottom: 1px solid #f8bd10;}
+  h3 { color: white; font-size: 1.25em; font-weight: normal; font-style: italic; border-bottom: 1px solid;}
+  h4 { color: white; font-size: 1.2em; font-weight: normal; border-bottom: 1px solid; margin: 0 0 1em .75em;}
+  a { color: #f8bd10;}
+  ul, dl { margin: 0 0 1em; }
+  p, dd, pre { color: white; line-height: 1.7em; margin: 0 0 1em; }
+  dt, dd, li { color: white; line-height: 1.7em; }
+  dt { margin-left: 1em; font-weight: bold;}
+  dd { margin-left: 2em; }
+  dfn { background-color: rgba(255, 255, 255, .25); padding: .25em .5em; font-weight: bold; }
+  .wl { background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjEwMSIgdmlld0JveD0iMCAwIDM2MCAxMDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjx0aXRsZT5QYWdlIDE8L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCAxMDAuODhoMzU5LjQ1OVYwSDB2MTAwLjg4eiIvPjwvZGVmcz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik04MC45MTEgOTguODA5YzMuOTg4IDAgNS45NTUtMi41MTIgNS45NTUtNi44MSAwLTQuMjcxLTEuOTY3LTYuNjU0LTUuOTU1LTYuNjU0aC0xLjkxNVY5OC44MWgxLjkxNXptLTQuMDktMTUuMjIzaDQuMjQ2YzUuMjMgMCA4LjAyNiAzLjAyOCA4LjAyNiA4LjQxMyAwIDUuNDEyLTIuNzk3IDguNTctNy45MjMgOC41N2gtNC4zNVY4My41ODZ6IiBmaWxsPSIjRjlDNzE0Ii8+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTkyLjY2NSAxMDAuNTdoMi4xNzVWODMuNTg0aC0yLjE3NXYxNi45ODR6TTEwNi4yMDUgODMuMjc0YzIuMzA0IDAgMy44NTcgMS4wNjIgNC44NjggMi4wOTdsLTEuMjQzIDEuMzcyYy0uODU1LS45MDYtMS45MTctMS41NzgtMy42LTEuNTc4LTMuNDQyIDAtNS42NDMgMi42NC01LjY0MyA2Ljg2IDAgNC4yNzIgMi4wMTkgNi45NjUgNS42NDQgNi45NjUgMS4yMTcgMCAyLjQwOC0uMzkgMy4wOC0xLjAxdi00LjQyN2gtMy41OTh2LTEuNzg2aDUuNTY2djcuMTQ1Yy0xLjExMyAxLjA4Ny0zLjAwMyAxLjk2OC01LjI4MSAxLjk2OC00LjQ1MyAwLTcuNjM4LTMuMjYyLTcuNjM4LTguODAzIDAtNS40NjMgMy4yODgtOC44MDMgNy44NDUtOC44MDNNMTE1LjE4OCAxMDAuNTdoMi4xNzRWODMuNTg0aC0yLjE3NHYxNi45ODR6TTEyNS40MTUgODUuMzk4aC01LjE1M3YtMS44MTNoMTIuNDU0djEuODEzaC01LjE1M3YxNS4xNzFoLTIuMTQ4Vjg1LjM5OHpNMTQyLjgzOCA5My42NTZsLS44MDMtMi41ODhjLS41OTUtMS44OS0xLjEzOS0zLjc1NS0xLjY4My01LjcyM2gtLjEwNGExNjYuNjc5IDE2Ni42NzkgMCAwIDEtMS42ODIgNS43MjNsLS44MjkgMi41ODhoNS4xem0uNTQ0IDEuNzM1aC02LjE4OWwtMS42MyA1LjE3OGgtMi4yMDFsNS43NDgtMTYuOTg0aDIuNDMzbDUuNzQ3IDE2Ljk4NGgtMi4yNzhsLTEuNjMtNS4xNzh6TTE0OS41NDMgODMuNTg1aDIuMTc0djE1LjE0Nmg3LjQwNHYxLjgzOGgtOS41NzhWODMuNTg1ek0xNzMuODI2IDgzLjI3NGMyLjAyIDAgMy42MjUuOTg0IDQuNjM0IDIuMDk3bC0xLjIxNiAxLjM3MmMtLjkwNi0uOTU3LTEuOTk0LTEuNTc4LTMuMzkxLTEuNTc4LTMuMjM2IDAtNS4zODYgMi42NC01LjM4NiA2Ljg2IDAgNC4yNzIgMi4wNDUgNi45NjUgNS4yODIgNi45NjUgMS42MDUgMCAyLjc5Ni0uNjczIDMuODgzLTEuODlsMS4yMTcgMS4zMmMtMS4zMiAxLjU1NC0zLjAwMyAyLjQ2LTUuMTUyIDIuNDYtNC4yNzIgMC03LjQ1Ni0zLjI2Mi03LjQ1Ni04LjgwMyAwLTUuNDYzIDMuMjM2LTguODAzIDcuNTg1LTguODAzTTE4NC4wNTIgOTEuNjM3aDIuODQ4YzIuNjQxIDAgNC4wOTEtMS4wODggNC4wOTEtMy4yODggMC0yLjIyNy0xLjQ1LTMuMDI5LTQuMDktMy4wMjloLTIuODQ5djYuMzE3em03LjE0NiA4LjkzMmwtNC4wOS03LjE3MmgtMy4wNTZ2Ny4xNzJoLTIuMTc0VjgzLjU4NWg1LjMzM2MzLjQ0MyAwIDUuOTI5IDEuMjQzIDUuOTI5IDQuNzY0IDAgMi42NC0xLjUwMiA0LjIyLTMuODA2IDQuODE1bDQuMzIzIDcuNDA1aC0yLjQ2ek0xOTYuNzkgODMuNTg1aDkuNzg2djEuODEzaC03LjYxMnY1LjMzM2g2LjQydjEuODM4aC02LjQydjYuMTYyaDcuODd2MS44MzhIMTk2Ljc5VjgzLjU4NXpNMjE3LjUyNyA5My42NTZsLS44MDMtMi41ODhjLS41OTYtMS44OS0xLjE0LTMuNzU1LTEuNjgzLTUuNzIzaC0uMTA0YTE2Ni42ODEgMTY2LjY4MSAwIDAgMS0xLjY4MiA1LjcyM2wtLjgzIDIuNTg4aDUuMTAyem0uNTQzIDEuNzM1aC02LjE4OGwtMS42MyA1LjE3OGgtMi4yMDJsNS43NDgtMTYuOTg0aDIuNDM0bDUuNzQ3IDE2Ljk4NEgyMTkuN2wtMS42My01LjE3OHpNMjI3Ljc3OCA4NS4zOThoLTUuMTUydi0xLjgxM2gxMi40NTN2MS44MTNoLTUuMTUydjE1LjE3MWgtMi4xNDlWODUuMzk4ek0yMzcuOTc4IDEwMC41N2gyLjE3NFY4My41ODRoLTIuMTc0djE2Ljk4NHpNMjQyLjM1MyA4My41ODVoMi4yNzhsMi43NDUgOS4xNjVjLjU5NiAyLjAyIDEuMDEgMy42MjUgMS42MyA1LjYxOGguMTA0Yy42MjItMS45OTMgMS4wNjItMy41OTggMS42MzItNS42MThsMi43MTgtOS4xNjVoMi4ybC01LjM4NSAxNi45ODRoLTIuNTExbC01LjQxMS0xNi45ODR6TTI1Ny44NiA4My41ODVoOS43ODd2MS44MTNoLTcuNjEydjUuMzMzaDYuNDJ2MS44MzhoLTYuNDJ2Ni4xNjJoNy44NzF2MS44MzhIMjU3Ljg2VjgzLjU4NXpNMjcxLjQ1MiA5Ni44NjdjMS4yMTcgMS4yNjggMi45IDIuMTIzIDQuNjg2IDIuMTIzIDIuMjI3IDAgMy41NDctMS4xMTMgMy41NDctMi43NyAwLTEuNzM1LTEuMjQzLTIuMjc5LTIuODQ5LTMuMDA0bC0yLjQzMy0xLjA2MWMtMS41NzktLjY3My0zLjQ0My0xLjg5LTMuNDQzLTQuMzc2IDAtMi41ODggMi4yNzgtNC41MDUgNS4zNi00LjUwNSAyLjAxOSAwIDMuODA1Ljg1NCA0Ljk5NiAyLjA5N2wtMS4xNCAxLjM5OGMtMS4wMzQtLjk4My0yLjMwNC0xLjYwNS0zLjg1Ny0xLjYwNS0xLjkxNiAwLTMuMTg0Ljk1OC0zLjE4NCAyLjQ4NiAwIDEuNjMxIDEuNTAxIDIuMjUyIDIuODIyIDIuODIxbDIuNDMzIDEuMDM2YzEuOTY4Ljg1NSAzLjQ5NSAyLjAyIDMuNDk1IDQuNTMyIDAgMi42OTItMi4yMjYgNC44NDEtNS44IDQuODQxYTguMTc1IDguMTc1IDAgMCAxLTUuOTI3LTIuNTExbDEuMjk0LTEuNTAyeiIgZmlsbD0iI0Y5QzcxNCIgbWFzaz0idXJsKCNiKSIvPjxwYXRoIGQ9Ik02MC4xMjcgMEw1My41NCAzMC44NDloLS4zMTVMNDUuOTUuMDAxSDMxLjUzbC03LjI4IDMwLjg0N2gtLjMxTDE3Ljk3Ni4wMDFIMEwxMi40NyA1My45ODVoMTguMjlsNy4xMjEtMzAuMDY4aC4yMzRsNi42NjYgMzAuMDY4aDE4LjIxN0w3NS42MjQuMDAxSDYwLjEyN3pNMjI4LjAyIDQxLjQ0Vi4wMDNoLTcuNzg2di4wMDRsLTIuMDA2LS4wMDRjLTQuNTY1IDAtOC4yNiAzLjcxMi04LjI2IDguM3Y0NS42ODNoMzcuMTkyVjQxLjQ0MWgtMTkuMTR6TTk5LjU0NSAwSDgxLjU2M3Y1My45ODVoNy4wODN2LS4wMDRsMi42MzktLjAyYzQuNTYyIDAgOC4yNi0zLjcxOSA4LjI2LTguM2wtLjAwMy0yLjI5NGguMDAzVi4wMDF6bTIzNS4zNTkgNDIuOTJjMy41NjUgMCA2LjA0My0xLjg2NiA2LjA0My02LjE1MyAwLTMuODkzLTIuMjQ2LTUuNTM2LTYuMzU3LTUuNTM2aC00LjQxM3YxMS42OWg0LjcyN3ptLS40NjItMjAuOTVjMy4zMyAwIDUuNjYtMS41NjQgNS42Ni01LjY5NSAwLTMuODE1LTEuOTQ4LTUuNDQ5LTUuNTg3LTUuNDQ5aC00LjMzOFYyMS45N2g0LjI2NXpNMzEyLjUxIDBoMjUuNzI0YzExLjkzMiAwIDE4Ljc1IDQuMjgyIDE4Ljc1IDEzLjcwNyAwIDYuNDctMy4wMiAxMC40NDMtOS4wNiAxMS45OTZ2LjIzNWM2LjgxNCAxLjE2OCAxMS41MzUgNC42NzcgMTEuNTM1IDEyLjY5NyAwIDguNzI4LTUuODAxIDE1LjM1LTIwLjM2NiAxNS4zNUgzMTIuNTFWLjAwMXptLTM5LjQ5NiAzMy44MDVoOS45MjdsLTQuODA0LTE1Ljg4N2gtLjRsLTQuNzIzIDE1Ljg4N3pNMjY5LjY4NCAwaDE5LjM3M2wxOC4yODMgNTMuOTg0aC0xOC4yODNsLTIuNzktOC45NTVoLTE2LjQzbC0yLjYzIDguOTU1aC0xNi4xMTJMMjY5LjY4MyAwek0xNjIuODgxIDBoMzguOTcxdjEyLjU0MWgtMjEuMTU1djcuODY0aDE2LjY1MnYxMi4zMTFoLTE2LjY1MnY4LjcyM2gyMi4xNjV2MTIuNTQ1aC0zOS45ODFWLjAwMXpNMTMwLjkgMjUuMDgzYzQuNDE4IDAgNi4yNzgtMi4zMzcgNi4yNzgtNi44NTUgMC00LjI4NC0xLjg2LTYuMzg5LTYuNDM0LTYuMzg5aC00LjQ5MnYxMy4yNDRoNC42NDh6TTEwOC41MDIgMGgyNS4xMTFjMTQuMTc4IDAgMjEuMjI0IDUuMjE3IDIxLjIyNCAxNy4yOTMgMCA3LjMyMS0zLjA5MSAxMS4wNjQtOC40NCAxMy41NTR2LjIzNWwxMS4zMSAyMi45MDJoLTE4LjQ0MWwtOC43NTQtMTguNDZoLTMuOTQ1djE4LjQ2aC0xOC4wNjVWMHoiIGZpbGw9IiNGRUZFRkUiIG1hc2s9InVybCgjYikiLz48L2c+PC9zdmc+);  width: 180px; height: 50px; background-size: contain; background-position: center; background-repeat: no-repeat; }
+</style>
+<script src="js/highlight.min.js"></script>
+</head>
+<body>
+<div class="wl"></div>
+<h1>Interactive Projection client framework documentation</h1>
+<h2>Introduction to the framework</h2>
+<p>
+  For purpose of convenient communication with the interactive project platform, Wirelab
+  has created an easy to use client framework javascript library. This system is under constant
+  development and eventually can be use for interaction with motion detection, audio and screens,
+  as well as future screen-to-screen and installation-to-installation communications.
+  Currently the main subsystem ready for use and most relevant for this hackaton is the motion
+  detection system.
+</p>
+
+<h2>Initialization of the framework</h2>
+<p>
+  In order to initalize the client framework you will need to include the <dfn>ipmi.min.js</dfn> script into you html file.
+  Next to this you will need a configuration to setup the motion detection target for the framework.
+  To setup the configuration use the following javascript structure:
+</p>
+<pre><code class="js">var config = {
+  tracking: {
+    hostaddr: [host address],
+    hostport: [host port],
+    hostpath: [host path],
+    method: IPMI.TrackingMethod.TSPS
+  }
+}
+</code></pre>
+<p>
+  Currently there are two installations available for use with the tracking system, these are the configuration parameters:
+</p>
+<dl>
+  <dt>Noorderhagen</dt>
+  <dd>
+    hostaddr: ipmi.wirelab.nl<br>
+    hostport: 4000<br>
+    hostpath: /secret/noorderhagen
+  </dd>
+  <dt>Wirelab office</dt>
+  <dd>
+    hostaddr: ipmi.wirelab.nl<br>
+    hostport: 4000<br>
+    hostpath: /secret/wirelab
+  </dd>
+</dl>
+
+<p>
+  Combining everything you will get the following set of code:
+</p>
+<pre><code class="js">&lt;script src="js/ipmi.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Setup configuration for motion tracking
+  var config = {
+    tracking: { 
+      hostaddr: 'ipmi.wirelab.nl', 
+      hostport: 4000, 
+      hostpath: '/secret/wirelab', 
+      method: IPMI.TrackingMethod.TSPS
+    }
+  };
+
+  // Initialize the client framework
+  var IPMIFramework = new IPMI.Framework(config);
+&lt;/script&gt;
+</code></pre>
+
+<p>
+  Additionally it's possible to activate a debug mode, which will give feedback on what is 
+  happening on the motion detection subsystem. This may prove usefull to determine if a successful
+  connection has been made as well as displaying other relevant information. In order to activate you 
+  can add <dfn>IPMI.Tools.DEBUG = true;</dfn> before initializing the framework.
+</p>
+
+<h2>Listening to framework signals</h2>
+<p>
+  The framework has been build around a signaling form of communication. This will allow you to 
+  easily hook into the systems events, without the need of handling eventbinding and unbinding
+  yourself.
+</p>
+<h3>Signal fundamentals</h3>
+<p>
+  Signals are based upon a subscription model. Your can register functions to the signals (either 
+  build-in signals or custom defined signals), which will be executed when the signal is triggered.
+  Upon registering a function on a signal you can setup the function to call, the context in which
+  it should be called as well as the priority of the signal in case multiple functions have been 
+  registered to the same signal. The higher the priority the earlier it get's called compared to
+  bindings with a lower priority.
+</p>
+<p>
+  The function definitions of <dfn>Signal.add()</dfn> and <dfn>Signal.addOnce()</dfn> are as following:
+</p>
+<pre><code class="ts">public add(listener: Function, context: Object = null, priority: number = 0): Signal;
+public addOnce(listener: Function, context: Object = null, priority: number = 0): Signal;
+</code></pre>
+
+<p>
+  An example for setting up your own custom signals below. In this example we will use the 5 most
+  commonly used methods for a signal. We will add 2 signal bindings, one through use of the 
+  <dfn>add()</dfn> method and one through the <dfn>addOnce()</dfn> method. Once we trigger 
+  (<dfn>dispatch()</dfn> method) the signal both signal bindings will be execute and the binding
+  added through the <dfn>addOnce()</dfn> method will be removed after execution. When we trigger
+  the signal again, only the binding added through <dfn>add()</dfn> will be executed. We can unbind
+  the binding through use of the <dfn>remove()</dfn> method, in order for this to work, you will
+  need to keep a reference to the function you bind to the signal in order be able to unbind again!
+</p>
+<p>
+  Altertively you can unbind ALL bindings on the signal by calling the <dfn>removeAll()</dfn> method.
+</p>
+<pre><code class="js">// Initalize a custom signal
+var signal = new IPMI.Signal('MySignal');
+
+// Add a single execute responder to the signal
+signal.addOnce(function() {
+  console.log('This signal binding will execute once and then remove itself');
+});
+
+// Add an infinite responder to the signal
+var handler = function() {
+  console.log('This signal binding every time the signal will be dispatched');
+}
+signal.add(handler);
+
+// Fire the signal
+signal.dispatch(); // Result: 2 console log lines, one for each of the handlers
+
+// Fire the signal again
+signal.dispatch(); // Result: 1 console log line, only for the signal.add (signal.addOnce was unbound at this point)
+
+// Remove the signal binding
+signal.remove(handler);
+
+// Fire the signal once more
+signal.dispatch(); // Result: no console logging as all signal bindings are unbound
+</code></pre>
+
+<h2>Framework classes</h2>
+<h3>Class: Tracking</h3>
+<p>
+  This class is automatically initialized upon setting up the framework. You can access it through the 
+  <dfn>[framework instance].Tracking</dfn> property.
+</p>
+<h4>Member properties</h4>
+<dl>
+  <dt>ConnectionOpenedSignal</dt>
+  <dd>This signal is triggered when a connection to the TSPS application has been (re)created.</dd>
+  <dt>ConnectionClosedSignal</dt>
+  <dd>This signal is triggered when the connection to the TSPS application has been terminated.</dd>
+  <dt>DataReceivedSignal</dt>
+  <dd>
+    This signal is triggered when any message is received from the TSPS application, this event will pass 
+    through any data that is received in unprocessed form. Using this signal should not be needed as
+    abstracted signals that do data processing are also provided.
+  </dd>
+  <dt>SceneUpdatedSignal</dt>
+  <dd>
+    This signal is triggered on every captured frame on the TSPS application. The scene will provide the following data:
+    <ul>
+      <li>Number of people in the motion capture zone</li>
+      <li>Number of black/white pixels in the difference image, this allows for calculating noise and percentage of motion area covered by blobs</li>
+      <li>The framerate at which the TSPS capture software is running</li>
+      <li>If enabled on TSPS, you can do a grid based readout of gridcells occupied by blobs</li>
+    </ul>
+  </dd>
+  <dt>PersonEnteredSignal</dt>
+  <dd>
+    This signal is triggered when a new blob appears on the screen, this will usually be when a person moves
+    into the motion capture area, but can also occur when blobs are shortly merged and then separate again.
+    Any newly discovered blob will trigger this signal.
+    This event will always give a <dfn>Blob</dfn> type data object (see definition below).
+  </dd>
+  <dt>PersonLeftSignal</dt>
+  <dd>
+    This signal is triggered when a blob disappears, this will usually be when a person moves out of the motion
+    capture area, but can also occur when blobs are merged (two people meet at the same point and can no longer be
+    identified as individuals). Any blob that leaves the scene will trigger this signal.
+    This event will always give a <dfn>Blob</dfn> type data object (see definition below).
+  </dd>
+  <dt>PersonUpdatedSignal</dt>
+  <dd>
+    This signal is triggered whenever any property of a blob are updated, i.e age, position, speed.
+    This event will always give a <dfn>Blob</dfn> type data object (see definition below).
+  </dd>
+  <dt>PersonChangedSignal</dt>
+  <dd>
+    This signal is triggered on ANY change to a blob, this is on entering, leaving and updates. Be carefull as 
+    using this signal with above 3 signals may cause duplicate handling of the same events!
+    This event will always give a <dfn>Blob</dfn> type data object (see definition below).
+  </dd>
+</dl>
+<h4>Member methods</h4>
+<dl>
+  <dt>getBlobs()</dt>
+  <dd>
+    This method will allow you to access an array of all blobs currently active and will return an array of 
+    <dfn>Blob</dfn> type objects.
+  </dd>
+</dl>
+
+<h3>Class: Blob</h3>
+<p>
+  This class is a datastructure returned on the Tracking class Person* signals as well as the getBlobs() method 
+  of the Tracking class.
+</p>
+<h4>Member properties</h4>
+<dl>
+  <dt>id</dt>
+  <dd>
+    The unique identifier of a blob, for as long as the blob remains to exist this id will not change and 
+    will always refer to the same blob. The id's are unique and will never be reused.
+  </dd>
+  <dt>age</dt>
+  <dd>
+    The age identifies for how many capture frames the blob exists, this value can only be sensibly used by
+    approximation when you use the scene's fps. I.e. age = 300 &amp; scene's fps: 60, will result in the real
+    age of the blob to be 300/60 = ~5 seconds.
+  </dd>
+  <dt>firstRegistration</dt>
+  <dd>
+    The timestamp of the first registration of the blob (in milliseconds!), to convert back to a human readable
+    date you can do <dfn>time = new Date(firstRegistration);</dfn>.
+  </dd>
+  <dt>removed</dt>
+  <dd>
+    A boolean marker that identifies if the blob should be considered "gone", blobs can remain to persist for some
+    time, where they should be considered gone, this could be due to person actually leaving, but can also occur if
+    for some reason a blob has become too old and should be considered gone.
+  </dd>
+  <dt>boundingBox</dt>
+  <dd>
+    A boundingbox object with the <dfn>x</dfn> and <dfn>y</dfn> coordinates of where the blob is located as well
+    as the <dfn>width</dfn> and <dfn>height</dfn> of the blob.<br>
+    <strong>Note</strong> that these values are relative values on a 0.0 to 1.0 value range.
+  </dd>
+  <dt>contours</dt>
+  <dd>
+    An array of points with <dfn>x</dfn> and <dfn>y</dfn> values that define a rough contour of the actually detected
+    shape of the blob.<br>
+    <strong>Note</strong> that these values are relative values on a 0.0 to 1.0 value range.
+  </dd>
+  <dt>centroid</dt>
+  <dd>
+    A point with <dfn>x</dfn> and <dfn>y</dfn> values that define the center point of the blob<br>
+    <strong>Note</strong> that these values are relative values on a 0.0 to 1.0 value range.
+  </dd>
+  <dt>velocity</dt>
+  <dd>
+    A vector specifying the motion speed and direction of a blob.
+  </dd>
+  <dt>base</dt>
+  <dd>
+    A point with <dfn>x</dfn> and <dfn>y</dfn> values that define the center base point of the blob, depending on 
+    the camera setup this may approximate the position of the feet of the person<br>
+    <strong>Note</strong> that these values are relative values on a 0.0 to 1.0 value range.
+  </dd>
+  <dt>top</dt>
+  <dd>
+    A point with <dfn>x</dfn> and <dfn>y</dfn> values that define the center top point of the blob, depending on 
+    the camera setup this may approximate the position of the head of the person<br>
+    <strong>Note</strong> that these values are relative values on a 0.0 to 1.0 value range.
+  </dd>
+</dl>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
