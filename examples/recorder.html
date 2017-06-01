@@ -20,11 +20,18 @@
         top: 50%;
         transform: translate(-50%, -50%);        
       }
+      #visualizer {
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        margin: 0 0 20px;
+        width: 75vh;
+      }      
     </style>
   </head>
   <body>
     <a id="download"></a>
     <div id="container">
+      <canvas id="visualizer"></canvas>
+
       <div class="left">
         Recording: <span id="recording">false</span><br>
         Recording duration: <span id="length">0.0</span> seconds<br>
@@ -50,6 +57,9 @@
 
       // Initialize the client framework
       var IPMIFramework = new IPMI.Framework(config);
+
+      // Create tracking visualizer
+      var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.querySelector('#visualizer'));
     </script>
 
     <script>    
@@ -61,9 +71,10 @@
 
       function startRecording() {
         recording = true;
+        netlog = [];
         scenecount = 0;
         blobcount = 0;
-        netlog = [];
+        startTime = new Date();
       }
 
       function stopRecording() {
