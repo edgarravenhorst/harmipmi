@@ -286,6 +286,39 @@ signal.dispatch(); // Result: no console logging as all signal bindings are unbo
   </dd>
 </dl>
 
+<h3>Class: TrackingVisualizer</h3>
+<p>
+  Within the library there is a tracking visualizer helper that can be used to display the exact blobs as currently
+  active within the motion detection area. You can enable this within your application for development purposes to
+  have an easy to use visual reference on what is happening before the camera compared to your application.
+</p>
+<p>
+  In order to activate the tracking visualizer you will need to create a canvas (and optionally give it a width). 
+  The tracking visualizer can then be initialized by passing the <dfn>[framework instance].Tracking</dfn> object
+  and a reference to the canvas you want to use to display the visualization.
+</p>
+<pre><code class="html">&lt;canvas id="visualizer" width="400"&gt;&lt;/canvas&gt;
+</code></pre>
+<pre><code class="js">// Setup configuration for motion tracking
+var config = {
+  tracking: { 
+    hostaddr: 'ipmi.wirelab.nl', 
+    hostport: 4000, 
+    hostpath: '/secret/wirelab', 
+    method: IPMI.TrackingMethod.TSPS
+  }
+};
+
+// Initialize the client framework
+var IPMIFramework = new IPMI.Framework(config);
+
+// Create tracking visualizer
+var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.querySelector('#visualizer'));
+</code></pre>
+<p>
+  You can see a demo of the visualizer here: <a href="visualizer.html">Motion visualization demo</a>
+</p>
+
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
