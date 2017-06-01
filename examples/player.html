@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Motion player - TSPS Simulator</title>
+    <style type="text/css">
+      html, body {
+        font-family: sans-serif;
+      }
+      .left {
+        margin: 0 0 20px;
+        text-align: left;
+      }
+      span {
+        font-weight: bold;
+      }
+      #container {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);        
+      }
+      #visualizer {
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        margin: 0 0 20px;
+        width: 75vh;
+      }      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="visualizer"></canvas>
+    </div>
+
+    <script src="js/ipmi.min.js"></script>
+    <script>
+      // Setup configuration for motion tracking
+      var config = {
+        tracking: { 
+          simfile: 'demo-recording.json',
+          method: IPMI.TrackingMethod.TSPSSimulator
+        }
+      };
+
+      // Initialize the client framework
+      var IPMIFramework = new IPMI.Framework(config);
+
+      // Create tracking visualizer
+      var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.querySelector('#visualizer'));
+    </script>
+  </body>
+</html>
