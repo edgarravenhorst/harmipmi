@@ -52,14 +52,8 @@ the required dependencies. Once installed you can run:
 
 Once the server is started you can access it through http://localhost:8081 for the app or http://localhost:8082 for the examples.
 
-Simulator
----------
-
-...
----------- docs/martijn.md <- todo
-
-Framework
----------
+Framework documentation & examples
+----------------------------------
 
 In order to access the documentation you can run `npm start examples` in the root folder of the repository to
 start a server with the example code and documentation.
