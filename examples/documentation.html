@@ -319,6 +319,88 @@ var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.qu
   You can see a demo of the visualizer here: <a href="visualizer.html">Motion visualization demo</a>
 </p>
 
+<h2>TSPS Simulation features</h2>
+<p>
+  The framework has an alternative method of motion detection in the form of a TSPS simulator. This simulator 
+  behaves exactly the same as the regular true TSPS connection, but you can use it to play a recorded set of
+  TSPS data in a continuous loop. During daylight situations, the real TSPS motion detection may not always
+  prove to be reliable, also it may be very tedious to have to wait for someone to enter the motion detection
+  area to test a application feature, the simulator can solve this for you.
+</p>
+<p>
+  In order to use the simulator you will need to have a recording of a TSPS session. An demo recording has
+  been included in the examples folder of this repository. You can also record your own motion set through
+  use of the provided recorder in the examples folder, which can be <a href="recorder.html">accessed here</a>.
+  In the examples directory you will also find <a href="player.html">an example</a> of how to use the simulator.
+</p>
+<p>
+  Once you have a recording file either self recorder or the demo recording you can use it to initalize the
+  framework.
+</p>
+<pre><code class="js">&lt;script src="js/ipmi.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Setup configuration for motion tracking
+  var config = {
+    tracking: { 
+      simfile: 'demo-recording.json', 
+      method: IPMI.TrackingMethod.TSPSSimulator
+    }
+  };
+
+  // Initialize the client framework
+  var IPMIFramework = new IPMI.Framework(config);
+&lt;/script&gt;
+</code></pre>
+<p>
+  The simulator will instantly start playing the recorded dataset in a continuous loop once the framework is 
+  started. The behavior of the simulator is identical to the true TSPS connection, so there is no need to 
+  change any of your code other then the config.
+</p>
+
+<h2>Using additional websocket connections</h2>
+<p>
+  If you have any requirement in your application for using a websocket connection for communication with other
+  platforms or tools you can make use of the provided websocket abstraction provided by the framework.
+  The websocket implementation available within the framework, support auto-reconnection and is also based
+  around signals.
+</p>
+<pre><code class="js">// Create a socket connection
+// IPMI.Socket([hostname], [hostport], [hostpath], [options]);
+// [hostname] The dnsname or the ipaddress of the server to connect to
+// [hostport] The portnumber to connect to
+// [hostpath] A custom path to connect to on the host, can be set to null if not needed
+// [options]  An object with configuration options for the socket
+//            The only supported option currently is whether or not to auto-reconnect (default: true)
+//            {autoreconnect: true||false}
+var socket = new IPMI.Socket(1.2.3.4, 1234, null, {autoreconnect: true});
+
+// A handler to act upon connection ready
+socket.ConnectionOpenedSignal.add(function() {
+  console.log('Connected');
+});
+
+// A handler to act upon (expected or unexpected) disconnects, not that you do NOT have to handle reconnecting
+// if the autoreconnect options is set to true!
+socket.ConnectionClosedSignal.add(function() {
+  console.log('Disconnected');
+});
+
+// A handler function that can handle all data being received
+socket.MessageReceivedSignal.add(function(data) {
+  console.log('Data received', data);
+});
+
+// Send an object over the websocket (note that a json object is automatically stringified)
+socket.SendMessageSignal.dispatch({foo: 'bar'});
+
+// Send a string over the websocket
+socket.SendMessageSignal.dispatch('my message');
+
+// Disconnect the websocket
+socket.DisconnectSignal.dispatch();
+</code></pre>
+
+
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
