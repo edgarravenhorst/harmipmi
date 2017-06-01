@@ -3,19 +3,43 @@
   <head>
     <title>Motion visualization demo</title>
     <style type="text/css">
+      html, body {
+        font-family: sans-serif;
+      }
+      #container {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);        
+      }
       #visualizer {
         box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-        top: 5px;
-        position: absolute;
-        right: 5px;
-        width: 250px;
+        margin: 0 0 20px;
+        width: 75vh;
+      }
+      .legend {
+        display: inline-block;
+        height: 20px;
+        margin: 0 10px;
+        vertical-align: middle; 
+        width: 20px;
       }
     </style>
   </head>
   <body>
-    <canvas id="visualizer"></canvas>
+    <div id="container">
+      <canvas id="visualizer"></canvas>
+      <br>
+      Blob
+      <div class="legend" style="background: rgba(255, 0, 0, 0.5); border: 1px solid #D00; border-radius: 10% 80% 40% 100%"></div>.contours
+      <div class="legend" style="border: 1px solid #00D;"></div>.boundingbox
+      <div class="legend" style="background: #0D0; border-radius: 100%"></div>.centroid
+      <div class="legend" style="background: #DD0; border-radius: 100%"></div>.top
+      <div class="legend" style="background: #0DD; border-radius: 100%"></div>.base
+    </div>
 
-    <script src="ipmi.min.js"></script>
+    <script src="js/ipmi.min.js"></script>
     <script>
       // Setup configuration for motion tracking
       var config = {
