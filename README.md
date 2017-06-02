@@ -28,6 +28,12 @@ The id and version of the app are specified in [app/manifest.json](app/manifest.
 Do not edit the screen id as currently only screen `1` is in use.
 Make sure you change the version if you want to publish an updated application.
 
+Browse requirements
+-------------------
+
+Applications will be run in the latest version of Chrome/Chromium. Therefor make sure that your application will work within this browser.
+As to webtechnologies you can use anything that the latest Chrome/Chromium supports.
+
 Motion
 ------
 
