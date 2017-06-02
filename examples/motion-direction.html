@@ -67,10 +67,7 @@
     </script>
 
     <script>
-      // The blob registry
-      var registry = {};
       var canvas = document.querySelector('#drawing');
-      resetCanvas();
       var context = canvas.getContext('2d');
 
       function resetCanvas() {
@@ -78,51 +75,36 @@
         canvas.height = canvas.offsetHeight;
       }
 
-      function createEntry(blob) {
-        registry[blob.id] = {
-          blob: blob,
-          color: ['rgb(', [Math.round(Math.random() * 128) + 128, Math.round(Math.random() * 128) + 128, Math.round(Math.random() * 128) + 128].join(','), ')'].join('')
-        };                                  // Add the entry to the registry
-      }
-      function updateEntry(blob) {
-        if (!registry[blob.id]) return;     // The blob does not exist
-        var entry = registry[blob.id];
-      }
-      function removeEntry(blob) {
-        if (!registry[blob.id]) return;     // The blob does not exist
-        delete(registry[blob.id]);          // Remove the entry from the registry
-      }
-
-      function drawBlobs() {
+      function drawBlobs(blobs) {
         resetCanvas();
 
-        var entry;
-        for (var id in registry) {
-          entry = registry[id];
+        var blob;
+        for (var i = 0; i < blobs.length; i++) {
+          blob = blobs[i];
 
           var baseLength = 2.5;
-          var motionLength = Math.sqrt(Math.abs(entry.blob.velocity.x*entry.blob.velocity.x) + Math.abs(entry.blob.velocity.y*entry.blob.velocity.y));
+          var motionLength = Math.sqrt(Math.abs(blob.velocity.x*blob.velocity.x) + Math.abs(blob.velocity.y*blob.velocity.y));
           
           context.beginPath();
-          context.arc(entry.blob.centroid.x * canvas.width, entry.blob.centroid.y * canvas.height, motionLength * baseLength, 0, 2 * Math.PI, false);
-          context.fillStyle = entry.color;
+          context.arc(blob.centroid.x * canvas.width, blob.centroid.y * canvas.height, motionLength * baseLength, 0, 2 * Math.PI, false);
+          context.fillStyle = 'rgba(200, 0, 0, 0.5)';
           context.fill();
 
           context.beginPath();
           drawArrow(
-            entry.blob.centroid.x * canvas.width, 
-            entry.blob.centroid.y * canvas.height,
-            entry.blob.centroid.x * canvas.width + entry.blob.velocity.x * baseLength, 
-            entry.blob.centroid.y * canvas.height + entry.blob.velocity.y * baseLength
+            blob.centroid.x * canvas.width, 
+            blob.centroid.y * canvas.height,
+            blob.centroid.x * canvas.width + blob.velocity.x * baseLength, 
+            blob.centroid.y * canvas.height + blob.velocity.y * baseLength
           );
-          context.lineWidth = 3;
+          context.lineWidth = 2;
           context.lineCap = 'round';
           context.stroke();          
         }
       }
 
       function drawArrow(fromx, fromy, tox, toy){
-        var headlen = 10;   // length of head in pixels
+        var headlen = 5;   // length of head in pixels
         var angle = Math.atan2(toy-fromy,tox-fromx);
         context.moveTo(fromx, fromy);
         context.lineTo(tox, toy);
@@ -131,26 +113,9 @@
         context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));
       }
 
-      // Register blobs
-      IPMIFramework.Tracking.PersonEnteredSignal.add(function(blob) {
-        createEntry(blob);                        // Create the entry
-        updateEntry(blob);                        // Update the entry
-      });
-
-      // Update blobs
-      IPMIFramework.Tracking.PersonUpdatedSignal.add(function(blob) {
-        if (!registry[blob.id]) createEntry(blob);    // We may have missed a person entered signal, so register it
-        updateEntry(blob);                        // Update the entry
-      });
-
-      // Unregister blobs
-      IPMIFramework.Tracking.PersonLeftSignal.add(function(blob) {
-        removeEntry(blob);                        // Remove the entry
-      });
-
       // Use scene updates (~60fps) to draw
       IPMIFramework.Tracking.SceneUpdatedSignal.add(function(scene) {
-        drawBlobs();
+        drawBlobs(IPMIFramework.Tracking.getBlobs());
       });
     </script>
   </body>
