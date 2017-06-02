@@ -357,6 +357,40 @@ var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.qu
   change any of your code other then the config.
 </p>
 
+<h2>Using a mouse to simulate motion tracking</h2>
+<p>
+  Beside the TSPS and TSPSSimulator methods for tracking there is also a third option that will allow you to
+  simulate/emulate a single blob with a mouse. The mouse needs to be bound to a HTML dom element that you wish
+  to use as the detection area of the motion tracking.
+</p>
+<p>
+  Within the detection area, mouse-enter, mouse-leave and mouse-move are monitored and translated into the tracking
+  signals as you already use when using TSPS or TSPSSimulator. The mouse adapter also triggers SceneUpdatedSignal
+  signals as the TSPS and TSPSSimulator do.
+</p>
+<p>
+  In order to use the mouse adapter you can use the following config for initializing the framework.
+</p>
+<pre><code class="js">&lt;script src="js/ipmi.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Setup configuration for motion tracking
+  var config = {
+    tracking: { 
+      pointerTarget: document.querySelector('body'), 
+      method: IPMI.TrackingMethod.Mouse
+    }
+  };
+
+  // Initialize the client framework
+  var IPMIFramework = new IPMI.Framework(config);
+&lt;/script&gt;
+</code></pre>
+
+<p>
+  The signals send out by the mouse adapter are identical to what you will receive from TSPS or TSPSSimulator, so
+  there is no need to change any of your code other then the config.
+</p>
+
 <h2>Using additional websocket connections</h2>
 <p>
   If you have any requirement in your application for using a websocket connection for communication with other

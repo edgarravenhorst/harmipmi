@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Motion blob monitor demo</title>
+    <title>Mouse capture adapter demo</title>
     <style type="text/css">
       html, body { background: #18232e; font-family: sans-serif; font-size: 0; color: white; }
       a { color: #f8bd10;}
@@ -19,6 +19,7 @@
         text-align: left;
       }
       #visualizer {
+        background: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, .5);
         margin: 0 0 20px;
         width: 100%;
@@ -60,6 +61,7 @@
     <div class="wl"></div>
     <div class="back"><a href="/">Back to overview</a></div>
     <div id="container1">
+      <p>Move the mouse over the rectangle below to simulate a blob</p>
       <canvas id="visualizer"></canvas>
       <br>
       Blob
@@ -80,10 +82,8 @@
       // Setup configuration for motion tracking
       var config = {
         tracking: { 
-          hostaddr: 'ipmi.wirelab.nl', 
-          hostport: 4000, 
-          hostpath: '/secret/wirelab', 
-          method: IPMI.TrackingMethod.TSPS
+          pointerTarget: document.querySelector('#visualizer'),
+          method: IPMI.TrackingMethod.Mouse
         }
       };
 
