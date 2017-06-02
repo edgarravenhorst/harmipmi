@@ -35,6 +35,21 @@
 
       // Create tracking visualizer
       var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.querySelector('#visualizer'));
+
+      // Example signal bindings
+      IPMIFramework.Tracking.SceneUpdatedSignal.add(function(scene) {
+        // Handle logic that needs to use scene data
+      });
+
+      IPMIFramework.Tracking.PersonEnteredSignal.add(function(person) {
+        // Handle logic to be executed when a person enters the scene
+      });
+      IPMIFramework.Tracking.PersonUpdatedSignal.add(function(person) {
+        // Handle logic to be executed when a person moves within the scene
+      });
+      IPMIFramework.Tracking.PersonLeftSignal.add(function(person) {
+        // Handle logic to be executed when a person leaves the scene
+      });
     </script>
   </body>
 </html>
