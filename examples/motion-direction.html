@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Motion speed and direction demo</title>
+    <style type="text/css">
+      html, body { box-sizing: border-box; margin: 0; padding: 4px; background: #18232e; font-family: sans-serif; font-size: 15px; color: white; width: 100%; height: 100%; }
+      a { color: #f8bd10;}
+      .wl {
+        background-color: rgba(255, 255, 255, 0.1);
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjEwMSIgdmlld0JveD0iMCAwIDM2MCAxMDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjx0aXRsZT5QYWdlIDE8L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCAxMDAuODhoMzU5LjQ1OVYwSDB2MTAwLjg4eiIvPjwvZGVmcz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik04MC45MTEgOTguODA5YzMuOTg4IDAgNS45NTUtMi41MTIgNS45NTUtNi44MSAwLTQuMjcxLTEuOTY3LTYuNjU0LTUuOTU1LTYuNjU0aC0xLjkxNVY5OC44MWgxLjkxNXptLTQuMDktMTUuMjIzaDQuMjQ2YzUuMjMgMCA4LjAyNiAzLjAyOCA4LjAyNiA4LjQxMyAwIDUuNDEyLTIuNzk3IDguNTctNy45MjMgOC41N2gtNC4zNVY4My41ODZ6IiBmaWxsPSIjRjlDNzE0Ii8+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTkyLjY2NSAxMDAuNTdoMi4xNzVWODMuNTg0aC0yLjE3NXYxNi45ODR6TTEwNi4yMDUgODMuMjc0YzIuMzA0IDAgMy44NTcgMS4wNjIgNC44NjggMi4wOTdsLTEuMjQzIDEuMzcyYy0uODU1LS45MDYtMS45MTctMS41NzgtMy42LTEuNTc4LTMuNDQyIDAtNS42NDMgMi42NC01LjY0MyA2Ljg2IDAgNC4yNzIgMi4wMTkgNi45NjUgNS42NDQgNi45NjUgMS4yMTcgMCAyLjQwOC0uMzkgMy4wOC0xLjAxdi00LjQyN2gtMy41OTh2LTEuNzg2aDUuNTY2djcuMTQ1Yy0xLjExMyAxLjA4Ny0zLjAwMyAxLjk2OC01LjI4MSAxLjk2OC00LjQ1MyAwLTcuNjM4LTMuMjYyLTcuNjM4LTguODAzIDAtNS40NjMgMy4yODgtOC44MDMgNy44NDUtOC44MDNNMTE1LjE4OCAxMDAuNTdoMi4xNzRWODMuNTg0aC0yLjE3NHYxNi45ODR6TTEyNS40MTUgODUuMzk4aC01LjE1M3YtMS44MTNoMTIuNDU0djEuODEzaC01LjE1M3YxNS4xNzFoLTIuMTQ4Vjg1LjM5OHpNMTQyLjgzOCA5My42NTZsLS44MDMtMi41ODhjLS41OTUtMS44OS0xLjEzOS0zLjc1NS0xLjY4My01LjcyM2gtLjEwNGExNjYuNjc5IDE2Ni42NzkgMCAwIDEtMS42ODIgNS43MjNsLS44MjkgMi41ODhoNS4xem0uNTQ0IDEuNzM1aC02LjE4OWwtMS42MyA1LjE3OGgtMi4yMDFsNS43NDgtMTYuOTg0aDIuNDMzbDUuNzQ3IDE2Ljk4NGgtMi4yNzhsLTEuNjMtNS4xNzh6TTE0OS41NDMgODMuNTg1aDIuMTc0djE1LjE0Nmg3LjQwNHYxLjgzOGgtOS41NzhWODMuNTg1ek0xNzMuODI2IDgzLjI3NGMyLjAyIDAgMy42MjUuOTg0IDQuNjM0IDIuMDk3bC0xLjIxNiAxLjM3MmMtLjkwNi0uOTU3LTEuOTk0LTEuNTc4LTMuMzkxLTEuNTc4LTMuMjM2IDAtNS4zODYgMi42NC01LjM4NiA2Ljg2IDAgNC4yNzIgMi4wNDUgNi45NjUgNS4yODIgNi45NjUgMS42MDUgMCAyLjc5Ni0uNjczIDMuODgzLTEuODlsMS4yMTcgMS4zMmMtMS4zMiAxLjU1NC0zLjAwMyAyLjQ2LTUuMTUyIDIuNDYtNC4yNzIgMC03LjQ1Ni0zLjI2Mi03LjQ1Ni04LjgwMyAwLTUuNDYzIDMuMjM2LTguODAzIDcuNTg1LTguODAzTTE4NC4wNTIgOTEuNjM3aDIuODQ4YzIuNjQxIDAgNC4wOTEtMS4wODggNC4wOTEtMy4yODggMC0yLjIyNy0xLjQ1LTMuMDI5LTQuMDktMy4wMjloLTIuODQ5djYuMzE3em03LjE0NiA4LjkzMmwtNC4wOS03LjE3MmgtMy4wNTZ2Ny4xNzJoLTIuMTc0VjgzLjU4NWg1LjMzM2MzLjQ0MyAwIDUuOTI5IDEuMjQzIDUuOTI5IDQuNzY0IDAgMi42NC0xLjUwMiA0LjIyLTMuODA2IDQuODE1bDQuMzIzIDcuNDA1aC0yLjQ2ek0xOTYuNzkgODMuNTg1aDkuNzg2djEuODEzaC03LjYxMnY1LjMzM2g2LjQydjEuODM4aC02LjQydjYuMTYyaDcuODd2MS44MzhIMTk2Ljc5VjgzLjU4NXpNMjE3LjUyNyA5My42NTZsLS44MDMtMi41ODhjLS41OTYtMS44OS0xLjE0LTMuNzU1LTEuNjgzLTUuNzIzaC0uMTA0YTE2Ni42ODEgMTY2LjY4MSAwIDAgMS0xLjY4MiA1LjcyM2wtLjgzIDIuNTg4aDUuMTAyem0uNTQzIDEuNzM1aC02LjE4OGwtMS42MyA1LjE3OGgtMi4yMDJsNS43NDgtMTYuOTg0aDIuNDM0bDUuNzQ3IDE2Ljk4NEgyMTkuN2wtMS42My01LjE3OHpNMjI3Ljc3OCA4NS4zOThoLTUuMTUydi0xLjgxM2gxMi40NTN2MS44MTNoLTUuMTUydjE1LjE3MWgtMi4xNDlWODUuMzk4ek0yMzcuOTc4IDEwMC41N2gyLjE3NFY4My41ODRoLTIuMTc0djE2Ljk4NHpNMjQyLjM1MyA4My41ODVoMi4yNzhsMi43NDUgOS4xNjVjLjU5NiAyLjAyIDEuMDEgMy42MjUgMS42MyA1LjYxOGguMTA0Yy42MjItMS45OTMgMS4wNjItMy41OTggMS42MzItNS42MThsMi43MTgtOS4xNjVoMi4ybC01LjM4NSAxNi45ODRoLTIuNTExbC01LjQxMS0xNi45ODR6TTI1Ny44NiA4My41ODVoOS43ODd2MS44MTNoLTcuNjEydjUuMzMzaDYuNDJ2MS44MzhoLTYuNDJ2Ni4xNjJoNy44NzF2MS44MzhIMjU3Ljg2VjgzLjU4NXpNMjcxLjQ1MiA5Ni44NjdjMS4yMTcgMS4yNjggMi45IDIuMTIzIDQuNjg2IDIuMTIzIDIuMjI3IDAgMy41NDctMS4xMTMgMy41NDctMi43NyAwLTEuNzM1LTEuMjQzLTIuMjc5LTIuODQ5LTMuMDA0bC0yLjQzMy0xLjA2MWMtMS41NzktLjY3My0zLjQ0My0xLjg5LTMuNDQzLTQuMzc2IDAtMi41ODggMi4yNzgtNC41MDUgNS4zNi00LjUwNSAyLjAxOSAwIDMuODA1Ljg1NCA0Ljk5NiAyLjA5N2wtMS4xNCAxLjM5OGMtMS4wMzQtLjk4My0yLjMwNC0xLjYwNS0zLjg1Ny0xLjYwNS0xLjkxNiAwLTMuMTg0Ljk1OC0zLjE4NCAyLjQ4NiAwIDEuNjMxIDEuNTAxIDIuMjUyIDIuODIyIDIuODIxbDIuNDMzIDEuMDM2YzEuOTY4Ljg1NSAzLjQ5NSAyLjAyIDMuNDk1IDQuNTMyIDAgMi42OTItMi4yMjYgNC44NDEtNS44IDQuODQxYTguMTc1IDguMTc1IDAgMCAxLTUuOTI3LTIuNTExbDEuMjk0LTEuNTAyeiIgZmlsbD0iI0Y5QzcxNCIgbWFzaz0idXJsKCNiKSIvPjxwYXRoIGQ9Ik02MC4xMjcgMEw1My41NCAzMC44NDloLS4zMTVMNDUuOTUuMDAxSDMxLjUzbC03LjI4IDMwLjg0N2gtLjMxTDE3Ljk3Ni4wMDFIMEwxMi40NyA1My45ODVoMTguMjlsNy4xMjEtMzAuMDY4aC4yMzRsNi42NjYgMzAuMDY4aDE4LjIxN0w3NS42MjQuMDAxSDYwLjEyN3pNMjI4LjAyIDQxLjQ0Vi4wMDNoLTcuNzg2di4wMDRsLTIuMDA2LS4wMDRjLTQuNTY1IDAtOC4yNiAzLjcxMi04LjI2IDguM3Y0NS42ODNoMzcuMTkyVjQxLjQ0MWgtMTkuMTR6TTk5LjU0NSAwSDgxLjU2M3Y1My45ODVoNy4wODN2LS4wMDRsMi42MzktLjAyYzQuNTYyIDAgOC4yNi0zLjcxOSA4LjI2LTguM2wtLjAwMy0yLjI5NGguMDAzVi4wMDF6bTIzNS4zNTkgNDIuOTJjMy41NjUgMCA2LjA0My0xLjg2NiA2LjA0My02LjE1MyAwLTMuODkzLTIuMjQ2LTUuNTM2LTYuMzU3LTUuNTM2aC00LjQxM3YxMS42OWg0LjcyN3ptLS40NjItMjAuOTVjMy4zMyAwIDUuNjYtMS41NjQgNS42Ni01LjY5NSAwLTMuODE1LTEuOTQ4LTUuNDQ5LTUuNTg3LTUuNDQ5aC00LjMzOFYyMS45N2g0LjI2NXpNMzEyLjUxIDBoMjUuNzI0YzExLjkzMiAwIDE4Ljc1IDQuMjgyIDE4Ljc1IDEzLjcwNyAwIDYuNDctMy4wMiAxMC40NDMtOS4wNiAxMS45OTZ2LjIzNWM2LjgxNCAxLjE2OCAxMS41MzUgNC42NzcgMTEuNTM1IDEyLjY5NyAwIDguNzI4LTUuODAxIDE1LjM1LTIwLjM2NiAxNS4zNUgzMTIuNTFWLjAwMXptLTM5LjQ5NiAzMy44MDVoOS45MjdsLTQuODA0LTE1Ljg4N2gtLjRsLTQuNzIzIDE1Ljg4N3pNMjY5LjY4NCAwaDE5LjM3M2wxOC4yODMgNTMuOTg0aC0xOC4yODNsLTIuNzktOC45NTVoLTE2LjQzbC0yLjYzIDguOTU1aC0xNi4xMTJMMjY5LjY4MyAwek0xNjIuODgxIDBoMzguOTcxdjEyLjU0MWgtMjEuMTU1djcuODY0aDE2LjY1MnYxMi4zMTFoLTE2LjY1MnY4LjcyM2gyMi4xNjV2MTIuNTQ1aC0zOS45ODFWLjAwMXpNMTMwLjkgMjUuMDgzYzQuNDE4IDAgNi4yNzgtMi4zMzcgNi4yNzgtNi44NTUgMC00LjI4NC0xLjg2LTYuMzg5LTYuNDM0LTYuMzg5aC00LjQ5MnYxMy4yNDRoNC42NDh6TTEwOC41MDIgMGgyNS4xMTFjMTQuMTc4IDAgMjEuMjI0IDUuMjE3IDIxLjIyNCAxNy4yOTMgMCA3LjMyMS0zLjA5MSAxMS4wNjQtOC40NCAxMy41NTR2LjIzNWwxMS4zMSAyMi45MDJoLTE4LjQ0MWwtOC43NTQtMTguNDZoLTMuOTQ1djE4LjQ2aC0xOC4wNjVWMHoiIGZpbGw9IiNGRUZFRkUiIG1hc2s9InVybCgjYikiLz48L2c+PC9zdmc+);
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: contain; 
+        height: 10vh;
+        position: absolute; 
+        transform: translate(-50%, -50%);
+        width: 10vh;
+      }
+      .back { position: absolute; right: 10px; top: 10px;}
+      #container {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);        
+      }
+      #drawing {
+        background: white;
+        height: 75vh;
+        width: 75vh;
+      }
+      #visualizer {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        transform: scale(.5);
+        transform-origin: 100% 100%;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back"><a href="/">Back to overview</a></div>
+    <div id="container">
+      <p>Arrow in circles shows the direction of movement, also the longer the arrow, the faster the blob moves</p>
+      <canvas id="drawing"></canvas>
+    </div>
+    <canvas id="visualizer"></canvas>
+
+    <script src="js/ipmi.min.js"></script>
+    <script>
+      // Setup configuration for motion tracking
+      var config = {
+        tracking: { 
+          hostaddr: 'ipmi.wirelab.nl', 
+          hostport: 4000, 
+          hostpath: '/secret/wirelab', 
+          method: IPMI.TrackingMethod.TSPS
+        }
+      };
+
+      // Initialize the client framework
+      var IPMIFramework = new IPMI.Framework(config);
+
+      // Create tracking visualizer
+      var visualizer = new IPMI.TrackingVisualizer(IPMIFramework.Tracking, document.querySelector('#visualizer'));
+    </script>
+
+    <script>
+      // The blob registry
+      var registry = {};
+      var canvas = document.querySelector('#drawing');
+      resetCanvas();
+      var context = canvas.getContext('2d');
+
+      function resetCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+
+      function createEntry(blob) {
+        registry[blob.id] = {
+          blob: blob,
+          color: ['rgb(', [Math.round(Math.random() * 128) + 128, Math.round(Math.random() * 128) + 128, Math.round(Math.random() * 128) + 128].join(','), ')'].join('')
+        };                                  // Add the entry to the registry
+      }
+      function updateEntry(blob) {
+        if (!registry[blob.id]) return;     // The blob does not exist
+        var entry = registry[blob.id];
+      }
+      function removeEntry(blob) {
+        if (!registry[blob.id]) return;     // The blob does not exist
+        delete(registry[blob.id]);          // Remove the entry from the registry
+      }
+
+      function drawBlobs() {
+        resetCanvas();
+
+        var entry;
+        for (var id in registry) {
+          entry = registry[id];
+
+          var baseLength = 2.5;
+          var motionLength = Math.sqrt(Math.abs(entry.blob.velocity.x*entry.blob.velocity.x) + Math.abs(entry.blob.velocity.y*entry.blob.velocity.y));
+          
+          context.beginPath();
+          context.arc(entry.blob.centroid.x * canvas.width, entry.blob.centroid.y * canvas.height, motionLength * baseLength, 0, 2 * Math.PI, false);
+          context.fillStyle = entry.color;
+          context.fill();
+
+          context.beginPath();
+          drawArrow(
+            entry.blob.centroid.x * canvas.width, 
+            entry.blob.centroid.y * canvas.height,
+            entry.blob.centroid.x * canvas.width + entry.blob.velocity.x * baseLength, 
+            entry.blob.centroid.y * canvas.height + entry.blob.velocity.y * baseLength
+          );
+          context.lineWidth = 3;
+          context.lineCap = 'round';
+          context.stroke();          
+        }
+      }
+
+      function drawArrow(fromx, fromy, tox, toy){
+        var headlen = 10;   // length of head in pixels
+        var angle = Math.atan2(toy-fromy,tox-fromx);
+        context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);
+        context.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+        context.moveTo(tox, toy);
+        context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));
+      }
+
+      // Register blobs
+      IPMIFramework.Tracking.PersonEnteredSignal.add(function(blob) {
+        createEntry(blob);                        // Create the entry
+        updateEntry(blob);                        // Update the entry
+      });
+
+      // Update blobs
+      IPMIFramework.Tracking.PersonUpdatedSignal.add(function(blob) {
+        if (!registry[blob.id]) createEntry(blob);    // We may have missed a person entered signal, so register it
+        updateEntry(blob);                        // Update the entry
+      });
+
+      // Unregister blobs
+      IPMIFramework.Tracking.PersonLeftSignal.add(function(blob) {
+        removeEntry(blob);                        // Remove the entry
+      });
+
+      // Use scene updates (~60fps) to draw
+      IPMIFramework.Tracking.SceneUpdatedSignal.add(function(scene) {
+        drawBlobs();
+      });
+    </script>
+  </body>
+</html>
