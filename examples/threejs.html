@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Three.JS demo (with mouse)</title>
+    <title>Three.JS demo</title>
     <style type="text/css">
       html, body { background: #18232e; font-family: sans-serif; font-size: 0; color: white; }
       a { color: #f8bd10;}
@@ -41,17 +41,19 @@
     <script src="js/ipmi.min.js"></script>
     <script>
       // Setup configuration for motion tracking
+
+      // Swap config to use your mouse
       var config = {
-        tracking: { 
-          pointerTarget: document.querySelector('#three'),
-          method: IPMI.TrackingMethod.Mouse
-        }
         // tracking: { 
-        //   hostaddr: 'ipmi.wirelab.nl', 
-        //   hostport: 4000, 
-        //   hostpath: '/secret/wirelab', 
-        //   method: IPMI.TrackingMethod.TSPS
+        //   pointerTarget: document.querySelector('#three'),
+        //   method: IPMI.TrackingMethod.Mouse
         // }
+        tracking: { 
+          hostaddr: 'ipmi.wirelab.nl', 
+          hostport: 4000, 
+          hostpath: '/secret/wirelab', 
+          method: IPMI.TrackingMethod.TSPS
+        }
       };
 
       // Activate debugmode (leave out to use regular mode)
