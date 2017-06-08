@@ -1,2 +1,3 @@
 #!/bin/bash
-zip -r -X bundle.zip app/*
+cd app
+zip -r -X ../bundle.zip *

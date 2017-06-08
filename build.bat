@@ -1,1 +1,2 @@
-zip.exe -r -X bundle.zip app/*
+cd app
+zip.exe -r -X ../bundle.zip *
