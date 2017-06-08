@@ -27,8 +27,6 @@ The id and version of the app are specified in [app/manifest.json](app/manifest.
 
 Do not edit the screen id as currently only screen `1` is in use.
 Make sure you change the version if you want to publish an updated application.
-Do not use a '-' in your manifest id! This will break your app!
-Make sure you change the id though.
 
 Browse requirements
 -------------------
