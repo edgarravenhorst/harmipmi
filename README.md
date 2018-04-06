@@ -38,7 +38,7 @@ Motion
 ------
 
 We use 'TSPS' for motion detection. TSPS access is provided with a websocket.
-Documentation about the specific protocol can be found at under [docs/ipmi-ws.md](docs/ipmi-ws.md).
+Documentation about the specific protocol can be found at under [/examples/documentation.html](/examples/documentation.html).
 
 There is a proxy available for both the wirelab installation and the noorderhagen installation.
 The websockets are available under the following urls.
