@@ -28,6 +28,10 @@ The id and version of the app are specified in [app/manifest.json](app/manifest.
 Do not edit the screen id as currently only screen `1` is in use.
 Make sure you change the version if you want to publish an updated application.
 
+Mask
+----
+The application on Noorderhagen is permanently covered with a mask to prevent projecting on the windows in the wall. You can get this mask here [/window-mask.svg](/window-mask.svg)
+
 Browse requirements
 -------------------
 
