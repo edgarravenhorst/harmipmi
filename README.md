@@ -1,4 +1,4 @@
-IPMI Hackaton
+IPMI Hackathon
 =============
 
 This is a collection of tools, demos and a base application to build your app with.
