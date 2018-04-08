@@ -72,9 +72,9 @@ export default class Concordia extends React.Component {
   };
 
   private onPersonLeave = (blob: any) => {
-    //if (!IPMIFramework.Tracking.getBlobs().length) {
-    this.stopInteraction();
-    //}
+    if (!IPMIFramework.Tracking.getBlobs().length) {
+      this.stopInteraction();
+    }
   };
 
   private onPersonUpdate = (blob: any) => {
