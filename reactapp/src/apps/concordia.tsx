@@ -1,5 +1,4 @@
 import React = require("react");
-import Video from "../components/video";
 import Sequence from "../components/sequence";
 import { ipmiConfig } from "../ipmi_config";
 import { observable } from "mobx";
@@ -12,14 +11,17 @@ const IPMIFramework = new IPMI.Framework(ipmiConfig);
 @observer
 export default class Concordia extends React.Component {
   @observable private loop: Sequence;
-  @observable private scrubber: Sequence;
+  @observable private currentInteractive?: Sequence;
+  @observable private interactivePointing: Sequence;
+  @observable private interactiveLooking: Sequence;
   @observable public active: boolean = false;
 
   private overlay: any;
 
   public componentDidMount() {
     this.active = true;
-    this.scrubber.pause();
+    this.interactivePointing.pause();
+    this.interactiveLooking.pause();
     this.loop.playLoop();
 
     IPMIFramework.Tracking.PersonEnteredSignal.add(this.onPersonEntered);
@@ -35,16 +37,25 @@ export default class Concordia extends React.Component {
   }
 
   public startInteraction = () => {
-    this.scrubber.visible = true;
+    if (this.currentInteractive) {
+      return;
+    }
+    this.currentInteractive =
+      Math.random() > 0.5 ? this.interactiveLooking : this.interactivePointing;
+    console.log(this.currentInteractive);
+    this.currentInteractive.visible = true;
     this.loop.visible = false;
     this.loop.pause();
   };
 
   public stopInteraction = () => {
-    this.scrubber.visible = false;
-    this.loop.visible = true;
-    this.loop.currentFrame = 0;
-    this.loop.playLoop();
+    if (this.currentInteractive) {
+      this.currentInteractive.visible = false;
+      this.currentInteractive = undefined;
+      this.loop.visible = true;
+      this.loop.currentFrame = 0;
+      this.loop.playLoop();
+    }
   };
 
   private onPersonEntered = (blob: any) => {
@@ -58,8 +69,19 @@ export default class Concordia extends React.Component {
   };
 
   private onPersonUpdate = (blob: any) => {
-    if (this.scrubber && blob.id === IPMIFramework.Tracking.getBlobs()[0].id) {
-      this.scrubber.currentFrame = Math.floor(this.scrubber.frameCount * (1 - blob.centroid.x));
+    if (
+      this.currentInteractive &&
+      blob.id === IPMIFramework.Tracking.getBlobs()[0].id
+    ) {
+      const frameCount = this.currentInteractive.frameCount - 1;
+      const calcCurrentFrame = Math.floor(
+        this.currentInteractive.frameCount * (1 - blob.centroid.x)
+      );
+      this.currentInteractive.currentFrame = Math.min(
+        frameCount,
+        Math.max(0, calcCurrentFrame)
+      );
+      console.log(this.currentInteractive.currentFrame);
     }
   };
 
@@ -67,12 +89,21 @@ export default class Concordia extends React.Component {
     return (
       <div>
         <Sequence
-          ref={(ref: Sequence) => (this.scrubber = ref)}
-          key="scrubber"
-          baseUrl="apps/concordia/interactive/hackethon_InteractiveFrank"
-          numsize="0000"
+          ref={(ref: Sequence) => (this.interactiveLooking = ref)}
+          key="interactiveLooking"
+          baseUrl="apps/concordia/interactive/kijken/Kijken_Frank_Final_"
+          numsize="00000"
           fileExtention=".jpg"
-          frameCount={136}
+          frameCount={120}
+        />
+
+        <Sequence
+          ref={(ref: Sequence) => (this.interactivePointing = ref)}
+          key="interactivePointing"
+          baseUrl="apps/concordia/interactive/wijzen/Wijzen_Frank_Final_"
+          numsize="00000"
+          fileExtention=".jpg"
+          frameCount={105}
         />
 
         <Sequence
