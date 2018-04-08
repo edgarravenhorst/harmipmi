@@ -29,6 +29,7 @@ export default class Concordia extends React.Component {
     this.interactiveLooking.visible = false;
     this.interactiveLooking.pause();
 
+    this.loopApple.gotoAndStop(0);
     this.currentLoop = this.loopSleeping;
 
     IPMIFramework.Tracking.PersonEnteredSignal.add(this.onPersonEntered);
@@ -51,6 +52,7 @@ export default class Concordia extends React.Component {
       Math.random() > 0.5 ? this.interactiveLooking : this.interactivePointing;
     this.currentInteractive.visible = true;
 
+    this.currentLoop.gotoAndStop(0);
     this.currentLoop.hide();
   };
 
@@ -62,7 +64,6 @@ export default class Concordia extends React.Component {
       this.currentLoop =
         Math.random() > 0.5 ? this.loopApple : this.loopSleeping;
       this.currentLoop.show();
-      this.currentLoop.gotoAndStop(0);
       this.currentLoop.play();
     }
   };
