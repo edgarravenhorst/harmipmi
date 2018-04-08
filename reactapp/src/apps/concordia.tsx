@@ -1,4 +1,5 @@
 import React = require("react");
+import Video from "../components/video";
 import Sequence from "../components/sequence";
 import { ipmiConfig } from "../ipmi_config";
 import { observable } from "mobx";
@@ -10,8 +11,11 @@ const IPMIFramework = new IPMI.Framework(ipmiConfig);
 
 @observer
 export default class Concordia extends React.Component {
-  @observable private loop: Sequence;
   @observable private currentInteractive?: Sequence;
+  @observable private currentLoop: Video;
+  @observable private loop: Sequence;
+  @observable private loopApple: Video;
+  @observable private loopSleeping: Video;
   @observable private interactivePointing: Sequence;
   @observable private interactiveLooking: Sequence;
   @observable public active: boolean = false;
@@ -20,9 +24,12 @@ export default class Concordia extends React.Component {
 
   public componentDidMount() {
     this.active = true;
+    this.interactivePointing.visible = false;
     this.interactivePointing.pause();
+    this.interactiveLooking.visible = false;
     this.interactiveLooking.pause();
-    this.loop.playLoop();
+
+    this.currentLoop = this.loopSleeping;
 
     IPMIFramework.Tracking.PersonEnteredSignal.add(this.onPersonEntered);
     IPMIFramework.Tracking.PersonUpdatedSignal.add(this.onPersonUpdate);
@@ -42,19 +49,21 @@ export default class Concordia extends React.Component {
     }
     this.currentInteractive =
       Math.random() > 0.5 ? this.interactiveLooking : this.interactivePointing;
-    console.log(this.currentInteractive);
     this.currentInteractive.visible = true;
-    this.loop.visible = false;
-    this.loop.pause();
+
+    this.currentLoop.hide();
   };
 
   public stopInteraction = () => {
     if (this.currentInteractive) {
       this.currentInteractive.visible = false;
       this.currentInteractive = undefined;
-      this.loop.visible = true;
-      this.loop.currentFrame = 0;
-      this.loop.playLoop();
+
+      this.currentLoop =
+        Math.random() > 0.5 ? this.loopApple : this.loopSleeping;
+      this.currentLoop.show();
+      this.currentLoop.gotoAndStop(0);
+      this.currentLoop.play();
     }
   };
 
@@ -63,9 +72,9 @@ export default class Concordia extends React.Component {
   };
 
   private onPersonLeave = (blob: any) => {
-    if (!IPMIFramework.Tracking.getBlobs().length) {
-      this.stopInteraction();
-    }
+    //if (!IPMIFramework.Tracking.getBlobs().length) {
+    this.stopInteraction();
+    //}
   };
 
   private onPersonUpdate = (blob: any) => {
@@ -81,13 +90,28 @@ export default class Concordia extends React.Component {
         frameCount,
         Math.max(0, calcCurrentFrame)
       );
-      console.log(this.currentInteractive.currentFrame);
     }
   };
 
   public render() {
     return (
       <div>
+        <Video
+          loop={true}
+          src="apps/concordia/loop/sleeping/Slapen_Frank_FinalRender.mp4"
+          onReady={(video: any) => {
+            this.loopSleeping = video;
+          }}
+        />
+
+        <Video
+          loop={true}
+          src="apps/concordia/loop/apple/Appel_Pakken_Frank_FinalRender.mp4"
+          onReady={(video: any) => {
+            this.loopApple = video;
+          }}
+        />
+
         <Sequence
           ref={(ref: Sequence) => (this.interactiveLooking = ref)}
           key="interactiveLooking"
@@ -106,14 +130,14 @@ export default class Concordia extends React.Component {
           frameCount={105}
         />
 
-        <Sequence
+        {/* <Sequence
           ref={(ref: Sequence) => (this.loop = ref)}
           key="loop"
           baseUrl="apps/concordia/loop/Appel_Pakken_Frank_2_"
           fileExtention=".jpg"
           frameCount={136}
           speed={0.5}
-        />
+        /> */}
       </div>
     );
   }
